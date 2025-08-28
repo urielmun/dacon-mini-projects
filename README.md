@@ -1,13 +1,14 @@
-# dai_AIforSecurity
+# AIforSecurity
+---
 사이버 공격 유형 예측 해커톤: 트래픽 속 위협을 식별하라!
 
 # 인공지능 모델 선택
-1. Task Type: 
+1. Task Type:
 
-분류(Classification), 20개의 특성을 통해 12개의 결과 중 하나로 분류 
+분류(Classification), 20개의 특성을 통해 12개의 결과 중 하나로 분류
 {'GoldenEye', 'Slowloris', 'Benign', 'Web_Brute_Force', 'DDoS', 'SSH_Brute_Force', 'Botnet', 'Slow_HTTP', 'Web_XSS', 'FTP_Brute_Force', 'Port_Scanning', 'Hulk'}
 
-1. 데이터 샘플 수: 
+1. 데이터 샘플 수:
 
 3000개( 소량 데이터)→ 단순모델, 선형,로지스틱 회귀
 
@@ -30,7 +31,7 @@ GPU·메모리·저장공간 제약을 고려해 모델 크기와 복잡도를 �
 
 5. 성능요구도(정확도 vs 속도):
 
-평가 산식 : macro f1-score: 
+평가 산식 : macro f1-score:
 
 F1-score (클래스별): Precision과 Recall의 조화평균
 
@@ -38,15 +39,15 @@ Macro F1-score: 전체 C개의 클래스 각각의 F1 단순 평균낸 값
 
 정확도>속도
 
-#최적화 과정 
-1-1. 앙상블 모델의 적용 
+#최적화 과정
+1-1. 앙상블 모델의 적용
 bagging→ RandomForestClassifier
 boosting→XGBClassifier
 softVoting→ VotingClassifier
 세 개 모델의 train.csv 상의 F1-socre을 비교하여 정확도가 가장 높은 모델을 선택
 최적 모델: XGBoost (Macro F1: 0.8562)
 1-2. LabelEncoding→TargetEncoding
-XGBoost (Macro F1: 0.8489) 
+XGBoost (Macro F1: 0.8489)
 
 2. 모델의 종류를 늘린 후 가장 높은 정확도 모델 선택
 - -- 개별 모델 훈련 및 평가 ---
@@ -63,7 +64,7 @@ XGBoost (Macro F1: 0.8489)
 ▶ 모델 훈련: LightGBM LightGBM Macro F1 Score: 0.8379
 
 - -- 앙상블 모델 훈련 및 평가 ---
-- 
+-
 ▶ 모델 훈련: Voting Ensemble
 
 [LightGBM] [Warning] min_gain_to_split is set=0, min_split_gain=0.0 will be ignored. Current value: min_gain_to_split=0
@@ -86,9 +87,9 @@ Stacking Ensemble Macro F1 Score: 0.0815
 
 최종 최적 모델: XGBoost (Macro F1: 0.8489)
 
-#최종 리서치 
+#최종 리서치
 
-해당 대회는 인공지능 모델을 사용하여 20개의 특성을 분석하여 사이버 공격 유형 12개 중 하나로 분류한다. 
+해당 대회는 인공지능 모델을 사용하여 20개의 특성을 분석하여 사이버 공격 유형 12개 중 하나로 분류한다.
 
 따라서 분류 모델의 적용이 유리하다. decisionTree base/Ensemble
 
@@ -96,3 +97,4 @@ Stacking Ensemble Macro F1 Score: 0.0815
 - Voting Ensemble Macro F1 Score: 0.8363
 - LightGBM Macro F1 Score: 0.8379
 - XGBoost Macro F1 Score: 0.8485
+
